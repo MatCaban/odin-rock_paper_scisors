@@ -119,21 +119,41 @@ function playRound(){
     return [getUserPoint, getPcPoint];
 }
 
-playRound();
+
 //play the game
 // FUNCTION playGame
+function playGame(){
     // set variable gamesPlayed to 0, this is our sentry variable
+    let gamesPlayed = 0;
+
     // set userPointCount variable to 0 
+    let userPointCount = 0;
+
     // set pcPointCount variable to 0
+    let pcPointCount = 0;
+     
     // WHILE gamesPlayed is less than 5
-        // save values returned from CALL playRound(getComputerChoice, getUserChoice) into variables getUserPoint and getPcPoint
+    while(gamesPlayed < 5){
+        // save values returned from CALL playRound() into variables getUserPoint and getPcPoint
+        const [getUserPoint, getPcPoint] = playRound();
+        
         // if both getUserPoint and getPcPoint are true
+        if(getUserPoint && getPcPoint){
             // set userPointCount and pcPointCount plus 1
+            userPointCount += 1;
+            pcPointCount += 1;
+        } else if(getUserPoint){
         // else if getUserPoint is true
             // set userPointCount plus 1
-        // else
+            userPointCount += 1;
+        } else{
             // set pcPointCount plus1
-
+            pcPointCount += 1;
+        }
+        console.log("user point: " + userPointCount);
+        console.log("pc point: " + pcPointCount);
+        gamesPlayed++;
+    }
     // Decide who win
     // if userPoincCount is more than pcPointCount
         // pc win
@@ -141,3 +161,7 @@ playRound();
         // user win
     // else
         // draw
+
+}
+
+playGame();
