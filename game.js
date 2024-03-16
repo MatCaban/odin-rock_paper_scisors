@@ -45,6 +45,10 @@ function playRound(){
     // set userChoice to returned value from getUserChoice
     const userChoice = getUserChoice();
 
+    // message user what choose he and what choose PC
+    console.log("You choose " + userChoice);
+    console.log("PC choose " + computerChoice);
+
     // set getUserPoint boolean value to false
     let getUserPoint = false;
      
@@ -66,31 +70,53 @@ function playRound(){
         getUserPoint = true;
         console.log("User Wins! " + userChoice + " beats " + computerChoice);
     }
-    console.log(userWin());
-
+    
     // compare user and pc choices
-        // if they are same set getUserPoint and getPcPoint to true and return string -> Is a tie! compcuterChoice vs userChoice 
-        // if computerChoice is rock 
-            // ifuserChoice scisors
-                // pcWin
-            // else
-                // userWin
-
+    // if they are same set getUserPoint and getPcPoint to true and return string -> Is a tie! compcuterChoice vs userChoice
+    if(userChoice === computerChoice){
+        getUserPoint = true;
+        getPcPoint = true;
+        console.log("It is a tie! User choice: " + userChoice + " vs Computer choice: " + computerChoice);
+    }
+    // if computerChoice is rock
+    if(computerChoice === "rock"){
+        // if userChoice scisors
+        if(userChoice === "scissors"){
+            // pcWin
+            pcWin();
+        } else {
+            // userWin
+            userWin();
+        }
+    }
  
 
-        // if computerChoice is paper 
-            // if userChoice is rock
-                // pcWin             
-            // else
-                // userWin
-
+    // if computerChoice is paper
+    if(computerChoice === "paper"){ 
+        // if userChoice is rock
+        if(userChoice === "rock"){    
+            //pcWin
+            pcWin();
+        } else {             
+            // userWin
+            userWin();
+    }
+    }
               
-        // if computerChoice is scissors 
-            //if userChoice is paper
-                // pcWin
-            // else
-                // userWin
+    // if computerChoice is scissors
+    if (computerChoice === "scissors") {
+        //if userChoice is paper
+        if(userChoice === "paper"){
+            // pcWin
+            pcWin();
+        } else {
+            // userWin
+            userWin();
+        }    
+    } 
+        
     // return getUserPoint and getPcPoint as array
+    return [getUserPoint, getPcPoint];
 }
 
 playRound();
