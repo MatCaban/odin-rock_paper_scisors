@@ -155,13 +155,23 @@ function playGame(){
         console.log("------------------------\nEnd of round " + (gamesPlayed + 1) + "\n------------------------");
         gamesPlayed++;
     }
+    console.log("****************************");
+    console.log("MATCH RESULT");
+    console.log("****************************");
     // Decide who win
     // if userPoincCount is more than pcPointCount
+    if(userPointCount > pcPointCount){    
         // pc win
+        console.log("Congratulation You WIN!!!!");
+    } else if(pcPointCount > userPointCount){ 
     // else if pcPointCount si more than userPointCount
         // user win
+        console.log("Sorry! PC win this game!");
+    } else {
     // else
         // draw
+        console.log("It is DRAW!");
+    }
 
 }
 
