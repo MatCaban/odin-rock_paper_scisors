@@ -37,18 +37,36 @@ function getUserChoice(){
 
 
 //Play one round
-// FUNCTION playRound(getComputerChoice, getUserChoice)
-    // set compcuterChoice to returned value from getCompcuterChoice
+// FUNCTION playRound()
+function playRound(){
+    // set computerChoice to returned value from getCompcuterChoice
+    const computerChoice = getComputerChoice();
+    
     // set userChoice to returned value from getUserChoice
+    const userChoice = getUserChoice();
+
     // set getUserPoint boolean value to false
+    let getUserPoint = false;
+     
     // set getPcPoint boolean value to false
+    let getPcPoint = false;
 
     // helper functions:
     // FUNCTION pcWin
+    function pcWin(){
         // set getPcPoint to true and return string -> compture wins! computerChoice beats userChoice
-    // FUNCTION userWin
-        // set getUserPoint to true and return string -> user wins! userChoice beats computerChoice
+        getPcPoint = true;
+        console.log("Computer Wins! " + computerChoice + " beats " + userChoice);
+    }
 
+    
+    // FUNCTION userWin
+    function userWin(){
+        // set getUserPoint to true and return string -> user wins! userChoice beats computerChoice
+        getUserPoint = true;
+        console.log("User Wins! " + userChoice + " beats " + computerChoice);
+    }
+    console.log(userWin());
 
     // compare user and pc choices
         // if they are same set getUserPoint and getPcPoint to true and return string -> Is a tie! compcuterChoice vs userChoice 
@@ -73,7 +91,9 @@ function getUserChoice(){
             // else
                 // userWin
     // return getUserPoint and getPcPoint as array
+}
 
+playRound();
 //play the game
 // FUNCTION playGame
     // set variable gamesPlayed to 0, this is our sentry variable
