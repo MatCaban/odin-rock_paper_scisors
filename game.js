@@ -69,3 +69,11 @@ We are going to paly 5 games and decide who wins
             // set userPointCount plus 1
         // else
             // set pcPointCount plus1
+
+    // Decide who win
+    // if userPoincCount is more than pcPointCount
+        // pc win
+    // else if pcPointCount si more than userPointCount
+        // user win
+    // else
+        // draw
