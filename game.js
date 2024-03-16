@@ -6,15 +6,9 @@ We are going to paly 5 games and decide who wins
 */
 
 //Generate random choice for pc
-// FUNCTION getComputerChoice
 function getComputerChoice() {
-    // Generate random number from 0 to 2 and save it it variable computerChoice
     const computerChoice = Math.floor(Math.random() * 3);
-
-    // create variable name choices of type array [rock, paper, scissors]
     const choices = ["rock", "paper", "scissors"];
-
-    // return string from choices based on generated number
     return choices[computerChoice];
 }
 
@@ -22,154 +16,107 @@ function getComputerChoice() {
 
 
 //Get choice from user
-// FUNCTION getUserChoice
 function getUserChoice() {
-    // set variable userChoice of type string, ask user for choice from rock, paper scisors
     let userChoice = prompt("Choose one:\nrock\npaper\nscissors");
 
-    // convert userChoice to lower case
+    // convert to lowercase for consistency
     userChoice = userChoice.toLowerCase();
-
-    // return userChoice
     return userChoice;
 }
 
 
 
 //Play one round
-// FUNCTION playRound()
 function playRound() {
-    // set computerChoice to returned value from getCompcuterChoice
     const computerChoice = getComputerChoice();
-
-    // set userChoice to returned value from getUserChoice
     const userChoice = getUserChoice();
 
     // message user what choose he and what choose PC
     console.log("You choose " + userChoice);
     console.log("PC choose " + computerChoice);
 
-    // set winUser boolean value to false
+    // variables for tracking who wins this round
     let winUser = false;
-
-    // set winPc boolean value to false
     let winPc = false;
 
-    // helper functions:
-    // FUNCTION pcWin
+
     function pcWin() {
-        // set winPc to true and return string -> compture wins! computerChoice beats userChoice
         winPc = true;
         console.log("Computer Wins! " + computerChoice + " beats " + userChoice);
     }
 
-
-    // FUNCTION userWin
     function userWin() {
-        // set winUser to true and return string -> user wins! userChoice beats computerChoice
         winUser = true;
         console.log("User Wins! " + userChoice + " beats " + computerChoice);
     }
 
     // compare user and pc choices
-    // if they are same set winUser and winPc to true and return string -> Is a tie! compcuterChoice vs userChoice
     if (userChoice === computerChoice) {
         winUser = true;
         winPc = true;
-        console.log("It is a tie! User choice: " + userChoice + " vs Computer choice: " + computerChoice);
-    }
-    // if computerChoice is rock
-    else if (computerChoice === "rock") {
-        // if userChoice scisors
+        console.log("It is a tie! User choice: " +
+            userChoice +
+            " vs Computer choice: "
+            + computerChoice);
+    } else if (computerChoice === "rock") {
         if (userChoice === "scissors") {
-            // pcWin
             pcWin();
         } else {
-            // userWin
             userWin();
         }
-    }
-
-
-    // if computerChoice is paper
-    else if (computerChoice === "paper") {
-        // if userChoice is rock
+    } else if (computerChoice === "paper") {
         if (userChoice === "rock") {
-            //pcWin
             pcWin();
         } else {
-            // userWin
             userWin();
         }
-    }
-
-    // if computerChoice is scissors
-    else if (computerChoice === "scissors") {
-        //if userChoice is paper
+    } else if (computerChoice === "scissors") {
         if (userChoice === "paper") {
-            // pcWin
             pcWin();
         } else {
-            // userWin
             userWin();
         }
     }
 
-    // return winUser and winPc as array
     return [winUser, winPc];
 }
 
 
 //play the game
-// FUNCTION playGame
 function playGame() {
-    // set variable gamesPlayed to 0, this is our sentry variable
+    // sentry variable for while loop
     let gamesPlayed = 0;
 
-    // set userPointCount variable to 0 
+    // variables for score count
     let userPointCount = 0;
-
-    // set pcPointCount variable to 0
     let pcPointCount = 0;
 
-    // WHILE gamesPlayed is less than 5
     while (gamesPlayed < 5) {
-        // save values returned from CALL playRound() into variables userWin and pcWin
         const [winUser, winPc] = playRound();
 
-        // if both winUser and winPc are true
         if (winUser && winPc) {
-            // set userPointCount and pcPointCount plus 1
             userPointCount += 1;
             pcPointCount += 1;
         } else if (winUser) {
-            // else if winUser is true
-            // set userPointCount plus 1
             userPointCount += 1;
         } else if (winPc) {
-            // set pcPointCount plus1
             pcPointCount += 1;
         }
         console.log("user point: " + userPointCount);
         console.log("pc point: " + pcPointCount);
-        console.log("------------------------\nEnd of round " + (gamesPlayed + 1) + "\n------------------------");
+        console.log("------------------------\nEnd of round " +
+            (gamesPlayed + 1) +
+            "\n------------------------");
         gamesPlayed++;
     }
     console.log("****************************");
     console.log("MATCH RESULT");
     console.log("****************************");
-    // Decide who win
-    // if userPoincCount is more than pcPointCount
     if (userPointCount > pcPointCount) {
-        // pc win
         console.log("Congratulation You WIN!!!!");
     } else if (pcPointCount > userPointCount) {
-        // else if pcPointCount si more than userPointCount
-        // user win
         console.log("Sorry! PC win this game!");
     } else {
-        // else
-        // draw
         console.log("It is DRAW!");
     }
 
