@@ -24,21 +24,36 @@ We are going to paly 5 games and decide who wins
     // set userChoice to returned value from getUserChoice
     // set getUserPoint boolean value to false
     // set getPcPoint boolean value to false
+
+    // helper functions:
+    // FUNCTION pcWin
+        // set getPcPoint to true and return string -> compture wins! computerChoice beats userChoice
+    // FUNCTION userWin
+        // set getUserPoint to true and return string -> user wins! userChoice beats computerChoice
+
+
     // compare user and pc choices
         // if they are same set getUserPoint and getPcPoint to true and return string -> Is a tie! compcuterChoice vs userChoice 
-        // if computerChoice is rock and userChoice scisors
-            // set getPcPoint to true and return string -> compture wins! computerChoice beats userChoice
-        // else
-            // set getUserPoint to true and return string -> user wins! userChoice beats computerChoice
+        // if computerChoice is rock 
+            // ifuserChoice scisors
+                // pcWin
+            // else
+                // userWin
 
-// TODO --> Repair this logic 
+ 
 
-        // if computerChoice is paper and userChoice is rock
-            // set getPcPoint to true
-        // if computerChoice is scissors and userChoice is paper
-            // set getPcPoint to true
-        // else
-            // set getUserPoint to true
+        // if computerChoice is paper 
+            // if userChoice is rock
+                // pcWin             
+            // else
+                // userWin
+
+              
+        // if computerChoice is scissors 
+            //if userChoice is paper
+                // pcWin
+            // else
+                // userWin
     // return getUserPoint and getPcPoint as array
 
 //play the game
