@@ -77,9 +77,9 @@ function playRound(){
         getUserPoint = true;
         getPcPoint = true;
         console.log("It is a tie! User choice: " + userChoice + " vs Computer choice: " + computerChoice);
-    }
+    } 
     // if computerChoice is rock
-    if(computerChoice === "rock"){
+    else if(computerChoice === "rock"){
         // if userChoice scisors
         if(userChoice === "scissors"){
             // pcWin
@@ -92,7 +92,7 @@ function playRound(){
  
 
     // if computerChoice is paper
-    if(computerChoice === "paper"){ 
+    else if(computerChoice === "paper"){ 
         // if userChoice is rock
         if(userChoice === "rock"){    
             //pcWin
@@ -104,7 +104,7 @@ function playRound(){
     }
               
     // if computerChoice is scissors
-    if (computerChoice === "scissors") {
+    else if (computerChoice === "scissors") {
         //if userChoice is paper
         if(userChoice === "paper"){
             // pcWin
@@ -146,12 +146,13 @@ function playGame(){
         // else if getUserPoint is true
             // set userPointCount plus 1
             userPointCount += 1;
-        } else{
+        } else if(getPcPoint){
             // set pcPointCount plus1
             pcPointCount += 1;
         }
         console.log("user point: " + userPointCount);
         console.log("pc point: " + pcPointCount);
+        console.log("------------------------\nEnd of round " + (gamesPlayed + 1) + "\n------------------------");
         gamesPlayed++;
     }
     // Decide who win
