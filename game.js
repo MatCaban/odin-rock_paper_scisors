@@ -23,10 +23,18 @@ function getComputerChoice() {
 
 //Get choice from user
 // FUNCTION getUserChoice
-    // set variable userChoice of type string
-    // ask user for choice from rock, paper scisors
+function getUserChoice(){
+    // set variable userChoice of type string, ask user for choice from rock, paper scisors
+    let userChoice = prompt("Choose one:\nrock\npaper\nscissors");
+
     // convert userChoice to lower case
+    userChoice = userChoice.toLowerCase();
+    
     // return userChoice
+    return userChoice;
+}
+
+
 
 //Play one round
 // FUNCTION playRound(getComputerChoice, getUserChoice)
