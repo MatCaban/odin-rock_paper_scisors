@@ -7,9 +7,19 @@ We are going to paly 5 games and decide who wins
 
 //Generate random choice for pc
 // FUNCTION getComputerChoice
+function getComputerChoice() {
     // Generate random number from 0 to 2 and save it it variable computerChoice
-    // create variable name choices of type array [rock, paper, scisors]
+    const computerChoice = Math.floor(Math.random() * 3);
+
+    // create variable name choices of type array [rock, paper, scissors]
+    const choices = ["rock", "paper", "scissors"];
+
     // return string from choices based on generated number
+    return choices[computerChoice];
+}
+
+    
+
 
 //Get choice from user
 // FUNCTION getUserChoice
