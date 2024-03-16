@@ -18,18 +18,18 @@ function getComputerChoice() {
     return choices[computerChoice];
 }
 
-    
+
 
 
 //Get choice from user
 // FUNCTION getUserChoice
-function getUserChoice(){
+function getUserChoice() {
     // set variable userChoice of type string, ask user for choice from rock, paper scisors
     let userChoice = prompt("Choose one:\nrock\npaper\nscissors");
 
     // convert userChoice to lower case
     userChoice = userChoice.toLowerCase();
-    
+
     // return userChoice
     return userChoice;
 }
@@ -38,10 +38,10 @@ function getUserChoice(){
 
 //Play one round
 // FUNCTION playRound()
-function playRound(){
+function playRound() {
     // set computerChoice to returned value from getCompcuterChoice
     const computerChoice = getComputerChoice();
-    
+
     // set userChoice to returned value from getUserChoice
     const userChoice = getUserChoice();
 
@@ -49,39 +49,39 @@ function playRound(){
     console.log("You choose " + userChoice);
     console.log("PC choose " + computerChoice);
 
-    // set getUserPoint boolean value to false
-    let getUserPoint = false;
-     
-    // set getPcPoint boolean value to false
-    let getPcPoint = false;
+    // set winUser boolean value to false
+    let winUser = false;
+
+    // set winPc boolean value to false
+    let winPc = false;
 
     // helper functions:
     // FUNCTION pcWin
-    function pcWin(){
-        // set getPcPoint to true and return string -> compture wins! computerChoice beats userChoice
-        getPcPoint = true;
+    function pcWin() {
+        // set winPc to true and return string -> compture wins! computerChoice beats userChoice
+        winPc = true;
         console.log("Computer Wins! " + computerChoice + " beats " + userChoice);
     }
 
-    
+
     // FUNCTION userWin
-    function userWin(){
-        // set getUserPoint to true and return string -> user wins! userChoice beats computerChoice
-        getUserPoint = true;
+    function userWin() {
+        // set winUser to true and return string -> user wins! userChoice beats computerChoice
+        winUser = true;
         console.log("User Wins! " + userChoice + " beats " + computerChoice);
     }
-    
+
     // compare user and pc choices
-    // if they are same set getUserPoint and getPcPoint to true and return string -> Is a tie! compcuterChoice vs userChoice
-    if(userChoice === computerChoice){
-        getUserPoint = true;
-        getPcPoint = true;
+    // if they are same set winUser and winPc to true and return string -> Is a tie! compcuterChoice vs userChoice
+    if (userChoice === computerChoice) {
+        winUser = true;
+        winPc = true;
         console.log("It is a tie! User choice: " + userChoice + " vs Computer choice: " + computerChoice);
-    } 
+    }
     // if computerChoice is rock
-    else if(computerChoice === "rock"){
+    else if (computerChoice === "rock") {
         // if userChoice scisors
-        if(userChoice === "scissors"){
+        if (userChoice === "scissors") {
             // pcWin
             pcWin();
         } else {
@@ -89,40 +89,40 @@ function playRound(){
             userWin();
         }
     }
- 
+
 
     // if computerChoice is paper
-    else if(computerChoice === "paper"){ 
+    else if (computerChoice === "paper") {
         // if userChoice is rock
-        if(userChoice === "rock"){    
+        if (userChoice === "rock") {
             //pcWin
             pcWin();
-        } else {             
+        } else {
             // userWin
             userWin();
+        }
     }
-    }
-              
+
     // if computerChoice is scissors
     else if (computerChoice === "scissors") {
         //if userChoice is paper
-        if(userChoice === "paper"){
+        if (userChoice === "paper") {
             // pcWin
             pcWin();
         } else {
             // userWin
             userWin();
-        }    
-    } 
-        
-    // return getUserPoint and getPcPoint as array
-    return [getUserPoint, getPcPoint];
+        }
+    }
+
+    // return winUser and winPc as array
+    return [winUser, winPc];
 }
 
 
 //play the game
 // FUNCTION playGame
-function playGame(){
+function playGame() {
     // set variable gamesPlayed to 0, this is our sentry variable
     let gamesPlayed = 0;
 
@@ -131,22 +131,22 @@ function playGame(){
 
     // set pcPointCount variable to 0
     let pcPointCount = 0;
-     
+
     // WHILE gamesPlayed is less than 5
-    while(gamesPlayed < 5){
-        // save values returned from CALL playRound() into variables getUserPoint and getPcPoint
-        const [getUserPoint, getPcPoint] = playRound();
-        
-        // if both getUserPoint and getPcPoint are true
-        if(getUserPoint && getPcPoint){
+    while (gamesPlayed < 5) {
+        // save values returned from CALL playRound() into variables userWin and pcWin
+        const [winUser, winPc] = playRound();
+
+        // if both winUser and winPc are true
+        if (winUser && winPc) {
             // set userPointCount and pcPointCount plus 1
             userPointCount += 1;
             pcPointCount += 1;
-        } else if(getUserPoint){
-        // else if getUserPoint is true
+        } else if (winUser) {
+            // else if winUser is true
             // set userPointCount plus 1
             userPointCount += 1;
-        } else if(getPcPoint){
+        } else if (winPc) {
             // set pcPointCount plus1
             pcPointCount += 1;
         }
@@ -160,15 +160,15 @@ function playGame(){
     console.log("****************************");
     // Decide who win
     // if userPoincCount is more than pcPointCount
-    if(userPointCount > pcPointCount){    
+    if (userPointCount > pcPointCount) {
         // pc win
         console.log("Congratulation You WIN!!!!");
-    } else if(pcPointCount > userPointCount){ 
-    // else if pcPointCount si more than userPointCount
+    } else if (pcPointCount > userPointCount) {
+        // else if pcPointCount si more than userPointCount
         // user win
         console.log("Sorry! PC win this game!");
     } else {
-    // else
+        // else
         // draw
         console.log("It is DRAW!");
     }
