@@ -17,7 +17,6 @@ function getComputerChoice() {
 let userChoice;
 //Get choice from user
 function getUserChoice(e) {
-    console.log(e.target.textContent.toLowerCase());
     userChoice = e.target.textContent.toLowerCase();
     playRound();
 }
@@ -26,8 +25,11 @@ function getUserChoice(e) {
 
 //Play one round
 function playRound() {
+    //To delete result div content
+    resultDiv.textContent="";
+
     const computerChoice = getComputerChoice();
-    
+
 
     // message user what choose he and what choose PC
     const userChooseText = "You choose " + userChoice;
@@ -42,23 +44,25 @@ function playRound() {
 
     function pcWin() {
         winPc = true;
-        console.log("Computer Wins! " + computerChoice + " beats " + userChoice);
-        resultDiv.textContent += "Computer Wins! " + computerChoice + " beats " + userChoice;
+        winPcText = "Computer Wins! " + computerChoice + " beats " + userChoice;
+        createPara(winPcText);
     }
 
     function userWin() {
         winUser = true;
-        console.log("User Wins! " + userChoice + " beats " + computerChoice);
+        winUserText = "User Wins! " + userChoice + " beats " + computerChoice;
+        createPara(winUserText);
     }
 
     // compare user and pc choices
     if (userChoice === computerChoice) {
         winUser = true;
         winPc = true;
-        console.log("It is a tie! User choice: " +
+        const isItTieText = "It is a tie! User choice: " +
             userChoice +
             " vs Computer choice: "
-            + computerChoice);
+            + computerChoice;
+        createPara(isItTieText);
     } else if (computerChoice === "rock") {
         if (userChoice === "scissors") {
             pcWin();
