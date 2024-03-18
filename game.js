@@ -14,11 +14,12 @@ function getComputerChoice() {
 
 
 
-
+let userChoice;
 //Get choice from user
 function getUserChoice(e) {
     console.log(e.target.textContent.toLowerCase());
-    return e.target.textContent.toLowerCase();
+    userChoice = e.target.textContent.toLowerCase();
+    playRound();
 }
 
 
@@ -26,7 +27,7 @@ function getUserChoice(e) {
 //Play one round
 function playRound() {
     const computerChoice = getComputerChoice();
-    const userChoice = getUserChoice();
+    
 
     // message user what choose he and what choose PC
     console.log("You choose " + userChoice);
@@ -122,7 +123,9 @@ function playGame() {
 const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
+const playBtn = document.querySelector("#play");
 
 rockBtn.addEventListener("click", getUserChoice);
 paperBtn.addEventListener("click", getUserChoice);
 scissorsBtn.addEventListener("click", getUserChoice);
+
