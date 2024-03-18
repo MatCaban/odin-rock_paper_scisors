@@ -17,11 +17,7 @@ function getComputerChoice() {
 
 //Get choice from user
 function getUserChoice() {
-    let userChoice = prompt("Choose one:\nrock\npaper\nscissors");
-
-    // convert to lowercase for consistency
-    userChoice = userChoice.toLowerCase();
-    return userChoice;
+    console.log("I was clicked");
 }
 
 
@@ -125,3 +121,5 @@ function playGame() {
 const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
+
+rockBtn.addEventListener("click", getUserChoice);
