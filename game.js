@@ -32,8 +32,8 @@ function playRound() {
 
 
     // Display the choices made by the user and the computer
-    const userChooseText = "You choose " + userChoice;
-    const pcChooseText = "PC choose " + computerChoice;
+    const userChooseText = `You choose ${userChoice}`;
+    const pcChooseText = `PC choose ${computerChoice}`;
     createPara(userChooseText);
     createPara(pcChooseText);
 
@@ -44,14 +44,14 @@ function playRound() {
     // Function to handle the case where the computer wins
     function pcWin() {
         winPc = true;
-        winPcText = "Computer Wins! " + computerChoice + " beats " + userChoice;
+        winPcText = `Computer Wins ${computerChoice} beats ${userChoice}`;
         createPara(winPcText);
     }
 
         // Function to handle the case where the user wins
     function userWin() {
         winUser = true;
-        winUserText = "User Wins! " + userChoice + " beats " + computerChoice;
+        winUserText = `User Wins! ${userChoice} ${computerChoice}`;
         createPara(winUserText);
     }
 
@@ -59,10 +59,7 @@ function playRound() {
     if (userChoice === computerChoice) {
         winUser = true;
         winPc = true;
-        const isItTieText = "It is a tie! User choice: " +
-            userChoice +
-            " vs Computer choice: "
-            + computerChoice;
+        const isItTieText = `It is a tie! User choice: ${userChoice} vs Computer choice: ${computerChoice}`;
         createPara(isItTieText);
     } else if (computerChoice === "rock") {
         if (userChoice === "scissors") {
@@ -106,13 +103,11 @@ function playGame() {
     } else if (winPc) {
         pcPointCount += 1;
     }
-    const userPointText = "user point: " + userPointCount;
+    const userPointText = `user point: ${userPointCount}`;
     createPara(userPointText);
-    const pcPointText = "pc point: " + pcPointCount;
+    const pcPointText = `pc point: ${pcPointCount}`;
     createPara(pcPointText);
-    const endOfRoundText = "------------------------\nEnd of round " +
-        (gamesPlayed + 1) +
-        "\n------------------------";
+    const endOfRoundText = `------------------------\nEnd of round ${gamesPlayed + 1}\n------------------------;`
     createPara(endOfRoundText);
     gamesPlayed++;
 
