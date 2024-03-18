@@ -93,11 +93,6 @@ let gamesPlayed = 0;
 //play the game
 function playGame() {
 
-    // variables for score count
-
-
-    // sentry variable for while loop, we are playing until
-    // someone reaches 5 points
 
     const [winUser, winPc] = playRound();
 
@@ -127,6 +122,8 @@ function playGame() {
         createPara(resultText1);
         createPara(resultText2);
         createPara(resultText3);
+        createPara(userPointText);
+        createPara(pcPointText);
         if (userPointCount > pcPointCount) {
             const youWin = "Congratulation You WIN!!!!";
             createPara(youWin);
