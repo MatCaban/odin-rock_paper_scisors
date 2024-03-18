@@ -2,10 +2,10 @@
 Game of rock scisors and paper against PC 
 Choices for PC will be randomly generate
 We ask user for his/her choice
-We are going to paly 5 games and decide who wins
+We are going to paly until someone has score 5 points
 */
 
-//Generate random choice for pc
+// Function to generate a random choice for the computer
 function getComputerChoice() {
     const computerChoice = Math.floor(Math.random() * 3);
     const choices = ["rock", "paper", "scissors"];
@@ -15,7 +15,7 @@ function getComputerChoice() {
 
 
 let userChoice;
-//Get choice from user
+// Function to get the user's choice and start the game
 function getUserChoice(e) {
     userChoice = e.target.textContent.toLowerCase();
     playGame();
@@ -23,15 +23,15 @@ function getUserChoice(e) {
 
 
 
-//Play one round
+// Function to play one round of the game
 function playRound() {
-    //To delete result div content
+    // Clear the results from the previous round
     resultDiv.textContent = "";
 
     const computerChoice = getComputerChoice();
 
 
-    // message user what choose he and what choose PC
+    // Display the choices made by the user and the computer
     const userChooseText = "You choose " + userChoice;
     const pcChooseText = "PC choose " + computerChoice;
     createPara(userChooseText);
@@ -41,13 +41,14 @@ function playRound() {
     let winUser = false;
     let winPc = false;
 
-
+    // Function to handle the case where the computer wins
     function pcWin() {
         winPc = true;
         winPcText = "Computer Wins! " + computerChoice + " beats " + userChoice;
         createPara(winPcText);
     }
 
+        // Function to handle the case where the user wins
     function userWin() {
         winUser = true;
         winUserText = "User Wins! " + userChoice + " beats " + computerChoice;
@@ -86,6 +87,7 @@ function playRound() {
     return [winUser, winPc];
 }
 
+// Variables to track the points for the user and the computer, and the number of games played
 let userPointCount = 0;
 let pcPointCount = 0;
 let gamesPlayed = 0;
@@ -119,11 +121,17 @@ function playGame() {
         resultText1 = "****************************";
         resultText2 = "MATCH Result";
         resultText3 = "****************************";
+        // Display the end of match separator
         createPara(resultText1);
         createPara(resultText2);
         createPara(resultText3);
+
+        // Display the final scores
         createPara(userPointText);
         createPara(pcPointText);
+
+        // Determine and display the winner
+
         if (userPointCount > pcPointCount) {
             const youWin = "Congratulation You WIN!!!!";
             createPara(youWin);
@@ -134,7 +142,7 @@ function playGame() {
             const itsDraw = "It is DRAW!";
             createPara(itsDraw);
         }
-        //reset "game"
+        // Reset the game for the next match
         userPointCount = 0;
         pcPointCount = 0;
         gamesPlayed = 0;
@@ -142,17 +150,20 @@ function playGame() {
 
 
 }
-
+// Get the buttons for the user's choices
 const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
-const playBtn = document.querySelector("#play");
-const resultDiv = document.querySelector("#resultsText")
 
+// Get the div to display the results
+const resultDiv = document.querySelector("#resultsText");
+
+// Add event listeners to the buttons to get the user's choice when clicked
 rockBtn.addEventListener("click", getUserChoice);
 paperBtn.addEventListener("click", getUserChoice);
 scissorsBtn.addEventListener("click", getUserChoice);
 
+// Function to create a new paragraph with the given text and add it to the results div
 const createPara = text => {
     const para = document.createElement("p");
     para.textContent = text;
