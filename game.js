@@ -30,8 +30,10 @@ function playRound() {
     
 
     // message user what choose he and what choose PC
-    console.log("You choose " + userChoice);
-    console.log("PC choose " + computerChoice);
+    const userChooseText = "You choose " + userChoice;
+    const pcChooseText = "PC choose " + computerChoice;
+    createPara(userChooseText);
+    createPara(pcChooseText);
 
     // variables for tracking who wins this round
     let winUser = false;
@@ -41,6 +43,7 @@ function playRound() {
     function pcWin() {
         winPc = true;
         console.log("Computer Wins! " + computerChoice + " beats " + userChoice);
+        resultDiv.textContent += "Computer Wins! " + computerChoice + " beats " + userChoice;
     }
 
     function userWin() {
@@ -124,8 +127,14 @@ const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
 const playBtn = document.querySelector("#play");
+const resultDiv = document.querySelector("#resultsText")
 
 rockBtn.addEventListener("click", getUserChoice);
 paperBtn.addEventListener("click", getUserChoice);
 scissorsBtn.addEventListener("click", getUserChoice);
 
+const createPara = text => {
+    const para = document.createElement("p");
+    para.textContent = text;
+    resultDiv.appendChild(para);
+}
