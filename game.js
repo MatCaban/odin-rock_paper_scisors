@@ -107,7 +107,7 @@ function playGame() {
     createPara(userPointText);
     const pcPointText = `pc point: ${pcPointCount}`;
     createPara(pcPointText);
-    const endOfRoundText = `------------------------\nEnd of round ${gamesPlayed + 1}\n------------------------;`
+    const endOfRoundText = `------------------------\nEnd of round ${gamesPlayed + 1}\n------------------------`
     createPara(endOfRoundText);
     gamesPlayed++;
 
