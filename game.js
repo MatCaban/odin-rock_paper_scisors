@@ -18,7 +18,7 @@ let userChoice;
 //Get choice from user
 function getUserChoice(e) {
     userChoice = e.target.textContent.toLowerCase();
-    playRound();
+    playGame();
 }
 
 
@@ -26,7 +26,7 @@ function getUserChoice(e) {
 //Play one round
 function playRound() {
     //To delete result div content
-    resultDiv.textContent="";
+    resultDiv.textContent = "";
 
     const computerChoice = getComputerChoice();
 
@@ -86,44 +86,63 @@ function playRound() {
     return [winUser, winPc];
 }
 
+let userPointCount = 0;
+let pcPointCount = 0;
+let gamesPlayed = 0;
 
 //play the game
 function playGame() {
-    // sentry variable for while loop
-    let gamesPlayed = 0;
 
     // variables for score count
-    let userPointCount = 0;
-    let pcPointCount = 0;
 
-    // while (gamesPlayed < 5) {
-    //     const [winUser, winPc] = playRound();
 
-    //     if (winUser && winPc) {
-    //         userPointCount += 1;
-    //         pcPointCount += 1;
-    //     } else if (winUser) {
-    //         userPointCount += 1;
-    //     } else if (winPc) {
-    //         pcPointCount += 1;
-    //     }
-    //     console.log("user point: " + userPointCount);
-    //     console.log("pc point: " + pcPointCount);
-    //     console.log("------------------------\nEnd of round " +
-    //         (gamesPlayed + 1) +
-    //         "\n------------------------");
-    //     gamesPlayed++;
-    // }
-    console.log("****************************");
-    console.log("MATCH RESULT");
-    console.log("****************************");
-    if (userPointCount > pcPointCount) {
-        console.log("Congratulation You WIN!!!!");
-    } else if (pcPointCount > userPointCount) {
-        console.log("Sorry! PC win this game!");
-    } else {
-        console.log("It is DRAW!");
+    // sentry variable for while loop, we are playing until
+    // someone reaches 5 points
+
+    const [winUser, winPc] = playRound();
+
+    if (winUser && winPc) {
+        userPointCount += 1;
+        pcPointCount += 1;
+    } else if (winUser) {
+        userPointCount += 1;
+    } else if (winPc) {
+        pcPointCount += 1;
     }
+    const userPointText = "user point: " + userPointCount;
+    createPara(userPointText);
+    const pcPointText = "pc point: " + pcPointCount;
+    createPara(pcPointText);
+    const endOfRoundText = "------------------------\nEnd of round " +
+        (gamesPlayed + 1) +
+        "\n------------------------";
+    createPara(endOfRoundText);
+    gamesPlayed++;
+
+    if (userPointCount >= 5 || pcPointCount >= 5) {
+        resultDiv.textContent = "";
+        resultText1 = "****************************";
+        resultText2 = "MATCH Result";
+        resultText3 = "****************************";
+        createPara(resultText1);
+        createPara(resultText2);
+        createPara(resultText3);
+        if (userPointCount > pcPointCount) {
+            const youWin = "Congratulation You WIN!!!!";
+            createPara(youWin);
+        } else if (pcPointCount > userPointCount) {
+            const pcWin = "Sorry! PC win this game!";
+            createPara(pcWin);
+        } else {
+            const itsDraw = "It is DRAW!";
+            createPara(itsDraw);
+        }
+        //reset "game"
+        userPointCount = 0;
+        pcPointCount = 0;
+        gamesPlayed = 0;
+    }
+
 
 }
 
