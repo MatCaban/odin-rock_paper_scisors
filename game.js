@@ -91,24 +91,24 @@ function playGame() {
     let userPointCount = 0;
     let pcPointCount = 0;
 
-    while (gamesPlayed < 5) {
-        const [winUser, winPc] = playRound();
+    // while (gamesPlayed < 5) {
+    //     const [winUser, winPc] = playRound();
 
-        if (winUser && winPc) {
-            userPointCount += 1;
-            pcPointCount += 1;
-        } else if (winUser) {
-            userPointCount += 1;
-        } else if (winPc) {
-            pcPointCount += 1;
-        }
-        console.log("user point: " + userPointCount);
-        console.log("pc point: " + pcPointCount);
-        console.log("------------------------\nEnd of round " +
-            (gamesPlayed + 1) +
-            "\n------------------------");
-        gamesPlayed++;
-    }
+    //     if (winUser && winPc) {
+    //         userPointCount += 1;
+    //         pcPointCount += 1;
+    //     } else if (winUser) {
+    //         userPointCount += 1;
+    //     } else if (winPc) {
+    //         pcPointCount += 1;
+    //     }
+    //     console.log("user point: " + userPointCount);
+    //     console.log("pc point: " + pcPointCount);
+    //     console.log("------------------------\nEnd of round " +
+    //         (gamesPlayed + 1) +
+    //         "\n------------------------");
+    //     gamesPlayed++;
+    // }
     console.log("****************************");
     console.log("MATCH RESULT");
     console.log("****************************");
